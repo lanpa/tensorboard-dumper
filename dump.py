@@ -1,25 +1,20 @@
 import struct
-# from src import summary_pb2
 import event_pb2
-# from crc32c import crc32c
 import io
 import argparse
 
 
 def read(data):
     header = struct.unpack('Q', data[:8])
-    data = data[8:]
 
     # crc_hdr = struct.unpack('I', data[:4])
-    data = data[4:]
     
-    event_str = data[:int(header[0])]
-    data = data[int(header[0]):]
+    event_str = data[12:12+int(header[0])] # 8+4
+    data = data[12+int(header[0])+4:]
+    return data, event_str
 
     # crc_ev = struct.unpack('>I', data[:4])
-    data = data[4:]
     
-    return data, event_str
 
 
 def save_img(encoded, step, save_gif):
