@@ -1,4 +1,6 @@
 # tensorboard-dumper
+requires: `pip install tensorboard`
+
 This tool dumps images in tensorboard.
 
 tested on python3

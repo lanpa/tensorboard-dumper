@@ -1,5 +1,5 @@
 import struct
-import event_pb2
+import tensorboard.compat.proto.event_pb2 as event_pb2
 import io
 import argparse
 
@@ -62,4 +62,4 @@ if args.gif:
     from PIL import Image
     im = images[0]
     im.save(args.output, save_all=True, append_images=images, duration=100, loop=0) # forever
-    
+ 
