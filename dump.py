@@ -53,6 +53,8 @@ while data and args.maxframe>0:
     event.ParseFromString(event_str)
     if event.HasField('summary'):
         for value in event.summary.value:
+            if value.HasField('simple_value'):
+                print(value.simple_value, value.tag, event.step)
             if value.HasField('image'):
                 img = value.image
                 save_img(img.encoded_image_string, event.step, save_gif=args.gif)
